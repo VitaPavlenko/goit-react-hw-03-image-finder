@@ -6,6 +6,7 @@ const ImageGalleryItem = ({ carts, onModalOpen }) => {
         return (
           <li key={id} className={s['gallery-item']}>
             <a
+              href="/"
               onClick={() => {
                 onModalOpen(largeImageURL);
               }}

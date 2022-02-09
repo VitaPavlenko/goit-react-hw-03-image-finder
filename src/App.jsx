@@ -98,7 +98,7 @@ export default class App extends Component {
           <Button onClickButton={this.onClickButton} />
           {showModal && (
             <Modal onClose={this.toggleModal}>
-              <a onClick={this.toggleModal}>
+              <a href="/" onClick={this.toggleModal}>
                 <img
                   src={imageURL}
                   alt=""
