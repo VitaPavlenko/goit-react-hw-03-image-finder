@@ -5,14 +5,14 @@ const ImageGalleryItem = ({ carts, onModalOpen }) => {
       {carts.map(({ id, webformatURL, largeImageURL }) => {
         return (
           <li key={id} className={s['gallery-item']}>
-            <a
-              href="/"
+            <img
               onClick={() => {
                 onModalOpen(largeImageURL);
               }}
-            >
-              <img className={s['gallery-img']} src={webformatURL} alt="" />
-            </a>
+              className={s['gallery-img']}
+              src={webformatURL}
+              alt=""
+            />
           </li>
         );
       })}
