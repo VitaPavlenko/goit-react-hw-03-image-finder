@@ -36,7 +36,7 @@ export default class App extends Component {
       prevState.newImput !== this.state.newImput ||
       prevState.page !== this.state.page
     ) {
-      // this.setState({ status: Status.PENDING });
+      this.setState({ status: Status.PENDING });
       getFetch(this.state.newImput, this.state.page)
         .then(data => {
           if (!data.hits.length) {
