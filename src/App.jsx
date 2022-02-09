@@ -5,7 +5,7 @@ import ImageGallery from './components/ImageGallery/ImageGallery';
 import Searchbar from './components/Searchbar/Searchbar';
 import getFetch from './server/getFeach';
 import Modal from 'components/Modal/Modal';
-
+import s from './App.module.css';
 const Status = {
   IDLE: 'idle',
   PENDING: 'pending',
@@ -86,7 +86,9 @@ export default class App extends Component {
     return (
       <>
         <Searchbar changeSearch={this.changeSearch} />
-        {status === 'idle' ? <div>Введите запрос ... </div> : null}
+        {status === 'idle' ? (
+          <div className={s['title']}> Введите запрос ... </div>
+        ) : null}
         {status === 'rejected' ? <div> Нет ответа по запросу</div> : null}
 
         {status === 'pending' && <Loader />}
@@ -97,7 +99,14 @@ export default class App extends Component {
           {showModal && (
             <Modal onClose={this.toggleModal}>
               <a onClick={this.toggleModal}>
-                <img src={imageURL} alt="" />
+                <img
+                  src={imageURL}
+                  alt=""
+                  style={{
+                    width: '800px',
+                    // height: '100p',
+                  }}
+                />
               </a>
             </Modal>
           )}
