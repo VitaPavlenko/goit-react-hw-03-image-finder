@@ -81,7 +81,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { hits, newImput, status, showModal, imageURL } = this.state;
+    const { hits, status, showModal, imageURL } = this.state;
 
     return (
       <>
