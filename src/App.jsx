@@ -4,6 +4,7 @@ import { Component } from 'react';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Searchbar from './components/Searchbar/Searchbar';
 import getFetch from './server/getFeach';
+import Modal from 'components/Modal/Modal';
 
 const Status = {
   IDLE: 'idle',
@@ -23,6 +24,8 @@ export default class App extends Component {
     error: null,
     status: Status.IDLE,
     page: 1,
+    showModal: false,
+    imageURL: '',
   };
 
   componentDidMount() {
@@ -66,8 +69,19 @@ export default class App extends Component {
     this.setState({ newImput, hits: [], page: 1 });
   };
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
+  onModalOpen = largeImageURL => {
+    this.setState({ imageURL: largeImageURL });
+    this.toggleModal();
+  };
+
   render() {
-    const { hits, newImput, status } = this.state;
+    const { hits, newImput, status, showModal, imageURL } = this.state;
 
     return (
       <>
@@ -78,8 +92,15 @@ export default class App extends Component {
         {status === 'pending' && <Loader />}
 
         <>
-          <ImageGallery carts={hits} />
+          <ImageGallery carts={hits} onModalOpen={this.onModalOpen} />
           <Button onClickButton={this.onClickButton} />
+          {showModal && (
+            <Modal onClose={this.toggleModal}>
+              <a onClick={this.toggleModal}>
+                <img src={imageURL} alt="" />
+              </a>
+            </Modal>
+          )}
         </>
       </>
     );

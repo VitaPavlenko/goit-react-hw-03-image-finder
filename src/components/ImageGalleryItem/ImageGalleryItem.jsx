@@ -1,10 +1,16 @@
-const ImageGalleryItem = ({ carts }) => {
+const ImageGalleryItem = ({ carts, onModalOpen }) => {
   return (
     <>
       {carts.map(({ id, webformatURL, largeImageURL }) => {
         return (
           <li key={id} className="gallery-item">
-            <img src={webformatURL} alt="" />
+            <a
+              onClick={() => {
+                onModalOpen(largeImageURL);
+              }}
+            >
+              <img src={webformatURL} alt="" />
+            </a>
           </li>
         );
       })}
