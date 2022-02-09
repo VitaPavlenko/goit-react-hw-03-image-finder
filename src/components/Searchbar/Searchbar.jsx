@@ -7,8 +7,9 @@ class Searchbar extends Component {
 
   handleNameChange = event => {
     console.log(event.currentTarget.value);
+    const inputValue = event.currentTarget.value.trim();
 
-    this.setState({ tags: event.currentTarget.value.toLowerCase() });
+    this.setState({ tags: inputValue.toLowerCase() });
   };
 
   onSubmit = e => {
